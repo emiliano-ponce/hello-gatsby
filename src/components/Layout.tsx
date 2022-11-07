@@ -44,7 +44,7 @@ interface LayoutProps {
 
 const Layout: FC<LayoutProps> = ({ children }) => {
     return (
-        <Grommet full theme={theme} themeMode="dark">
+        <Grommet full theme={theme} themeMode="dark" style={{ overflowX: 'hidden', overflowY: 'auto' }}>
             <PinnedMovieProvider>
                 <Navbar />
                 <Box as="main" flex pad="medium">

@@ -21,8 +21,7 @@ const About = () => (
                 <br />
                 <br />
                 You should be able to search for and pin movies to the home
-                page. And the site should be mobile friendly! (for the most
-                part)
+                page. And the site should be mobile friendly! (on Chrome)
                 <br />
                 <br />
                 I had fun making this. If I had more time I would probably

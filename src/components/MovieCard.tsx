@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { Pin } from 'grommet-icons'
 import styled from 'styled-components'
 import { Box, Image, Heading, Text, Paragraph } from 'grommet'
@@ -6,7 +6,6 @@ import { Box, Image, Heading, Text, Paragraph } from 'grommet'
 import { Movie } from '../lib/types'
 import IconButton from './IconButton'
 import { PinnedMovieContext } from '../context/PinnedMovieContext'
-import useIsMobile from '../hooks/useIsMobile'
 
 const basePosterUrl = 'https://image.tmdb.org/t/p/original'
 
@@ -24,6 +23,9 @@ const InfoBox = styled(Box)`
     }
     &:hover > .reveal {
         opacity: 1;
+    }
+    & img {
+        flex: 0 0 auto;
     }
 `
 
