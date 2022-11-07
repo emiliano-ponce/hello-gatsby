@@ -17,13 +17,9 @@ export const customTheme: Partial<ThemeType> = {
                 dark: '#023047',
                 light: '#D9DCD6',
             },
-            // 'background-contrast': {
-            //     dark: '#757780',
-            //     light: '#ECEBF3',
-            // },
             control: {
-                dark: '#219EBC',
-                light: '#FFB703',
+                dark: '#FB8500',
+                light: '#FB8500',
             },
             'accent-1': {
                 dark: '#FB8500',
