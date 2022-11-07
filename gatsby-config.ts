@@ -14,6 +14,12 @@ const config: GatsbyConfig = {
         'gatsby-plugin-image',
         'gatsby-plugin-sharp',
         {
+            resolve: 'gatsby-plugin-styled-components',
+            options: {
+                disableVendorPrefixes: true,
+            },
+        },
+        {
             resolve: 'gatsby-source-tmdb',
             options: {
                 apiKey: process.env.GATSBY_API_KEY,

@@ -1,4 +1,5 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
+import { deepMerge } from 'grommet/utils'
 import { Video, Menu } from 'grommet-icons'
 import {
     Heading,
@@ -8,16 +9,14 @@ import {
     Anchor,
     Layer,
     Sidebar,
-    ThemeContext,
     Grommet,
     grommet,
 } from 'grommet'
 
+import { customTheme } from './Layout'
 import GrommetLink from './GrommetLink'
 import useIsMobile from '../hooks/useIsMobile'
 import useSiteMetadata from '../hooks/useSiteMeta'
-import { customTheme } from './Layout'
-import { deepMerge } from 'grommet/utils'
 
 const Navbar = () => {
     const { title } = useSiteMetadata()
@@ -60,7 +59,7 @@ const MobileNav = () => {
                 icon={<Menu style={{ verticalAlign: 'middle' }} />}
             />
             {/** Auto theme was not applying here... */}
-            <Grommet theme={deepMerge(grommet, customTheme)} themeMode="auto">
+            <Grommet theme={deepMerge(grommet, customTheme)} themeMode="dark">
                 {show && (
                     <Layer
                         style={{ width: '50%' }}
