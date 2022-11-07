@@ -5,7 +5,7 @@ import {
     createHistory,
     LocationProvider,
     createMemorySource,
-} from '@reach/router'
+} from '@gatsbyjs/reach-router'
 
 export default function renderWithRouter(
     ui: ReactElement<any>,

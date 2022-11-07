@@ -10,13 +10,17 @@ import { searchMovies } from '../lib/services'
 import MovieGrid from '../components/MovieGrid'
 import SearchInput from '../components/search/SerarchInput'
 
+const isBrowser = typeof location !== 'undefined'
+
 const Search = () => {
     const [loading, setLoading] = useState(false)
     const [movies, setMovies] = useState<Movie[]>([])
 
     const getQuery = () => {
-        const params = new URLSearchParams(location.search)
-        return params.get('q') ?? ''
+        if (isBrowser) {
+            const params = new URLSearchParams(location.search)
+            return params.get('q') ?? ''
+        } else return ''
     }
 
     const debounced = useDebouncedCallback(
@@ -45,13 +49,11 @@ const Search = () => {
                 {/** location not available in SSR,
                  * checking if we are in a browser
                  */}
-                {typeof location && (
-                    <SearchInput
-                        style={{ marginBottom: 16 }}
-                        onChange={debounced}
-                        defaultValue={getQuery()}
-                    />
-                )}
+                <SearchInput
+                    style={{ marginBottom: 16 }}
+                    onChange={debounced}
+                    defaultValue={getQuery()}
+                />
                 {loading && (
                     <Layer background="transparent" responsive={false}>
                         <Box direction="row" align="center" margin="auto">

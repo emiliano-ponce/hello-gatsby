@@ -58,7 +58,7 @@ const PopularMovies = () => {
         <Box pad={{ horizontal: 'medium' }}>
             <Slider {...settings}>
                 {movies?.map((m) => (
-                    <Box pad="small">
+                    <Box key={m.id} pad="small">
                         <MovieCard movie={m} />
                     </Box>
                 ))}
