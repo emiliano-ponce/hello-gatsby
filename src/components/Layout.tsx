@@ -1,35 +1,61 @@
 import React, { FC, ReactNode } from 'react'
-import { Link, useStaticQuery, graphql } from 'gatsby'
-import { faFilm } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import useSiteMetadata from '../hooks/useSiteMeta'
+import { grommet } from 'grommet/themes'
+import { Grommet, Box, ThemeType } from 'grommet'
+
+import Navbar from './Navbar'
+import { deepMerge } from 'grommet/utils'
+import { PinnedMovieProvider } from '../context/PinnedMovieContext'
+
+export const customTheme: Partial<ThemeType> = {
+    global: {
+        colors: {
+            brand: {
+                dark: '#FFB703',
+                light: '#023047',
+            },
+            background: {
+                dark: '#023047',
+                light: '#D9DCD6',
+            },
+            // 'background-contrast': {
+            //     dark: '#757780',
+            //     light: '#ECEBF3',
+            // },
+            control: {
+                dark: '#219EBC',
+                light: '#FFB703',
+            },
+            'accent-1': {
+                dark: '#FB8500',
+                light: '#FB8500',
+            },
+            focus: {
+                dark: '#FB8500',
+                light: '#FB8500',
+            },
+        },
+        font: {
+            family: 'Inter',
+        },
+    },
+}
+
+const theme: ThemeType = deepMerge(grommet, customTheme)
 
 interface LayoutProps {
-    pageTitle: string | JSX.Element
     children: ReactNode
 }
 
-const Layout: FC<LayoutProps> = ({ pageTitle, children }) => {
-    const { title } = useSiteMetadata()
-    
+const Layout: FC<LayoutProps> = ({ children }) => {
     return (
-        <>
-            <nav>
-                {title} <FontAwesomeIcon icon={faFilm} />
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/about">About</Link>
-                    </li>
-                </ul>
-            </nav>
-            <main>
-                <h1>{pageTitle}</h1>
-                {children}
-            </main>
-        </>
+        <Grommet full theme={theme} themeMode="auto">
+            <PinnedMovieProvider>
+                <Navbar />
+                <Box as="main" flex pad="medium">
+                    {children}
+                </Box>
+            </PinnedMovieProvider>
+        </Grommet>
     )
 }
 
