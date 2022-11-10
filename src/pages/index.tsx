@@ -11,7 +11,7 @@ import HomeSearch from '../components/search/HomeSearch'
 
 const Index = () => {
     return (
-        <Layout>
+        <>
             <Box as="section">
                 <HomeSearch />
             </Box>
@@ -27,7 +27,7 @@ const Index = () => {
                 </Heading>
                 <PinnedMovies />
             </Box>
-        </Layout>
+        </>
     )
 }
 

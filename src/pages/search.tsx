@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { HeadFC } from 'gatsby'
+import type { PageProps } from 'gatsby'
 import { useDebouncedCallback } from 'use-debounce'
 import { Box, Layer, Spinner, Text } from 'grommet'
 
@@ -10,18 +11,12 @@ import { searchMovies } from '../lib/services'
 import MovieGrid from '../components/MovieGrid'
 import SearchInput from '../components/search/SerarchInput'
 
-const isBrowser = typeof location !== 'undefined'
-
-const Search = () => {
+const Search = ({ location }: PageProps) => {
     const [loading, setLoading] = useState(false)
     const [movies, setMovies] = useState<Movie[]>([])
 
-    const getQuery = () => {
-        if (isBrowser) {
-            const params = new URLSearchParams(location.search)
-            return params.get('q') ?? ''
-        } else return ''
-    }
+    const params = new URLSearchParams(location.search)
+    const query = params.get('q') ?? ''
 
     const debounced = useDebouncedCallback(
         (e: ChangeEvent<HTMLInputElement>) => doSearch(e.target.value),
@@ -29,7 +24,7 @@ const Search = () => {
     )
 
     useEffect(() => {
-        doSearch(getQuery())
+        doSearch(query)
     }, [])
 
     const doSearch = async (query: string) => {
@@ -37,46 +32,45 @@ const Search = () => {
             setLoading(true)
             setMovies(await searchMovies(query))
         } catch (e) {
-            // do something with error
+            // TODO: handle error
+            console.error(e)
         } finally {
             setLoading(false)
         }
     }
 
     return (
-        <Layout>
-            <Box flex>
-                {/** location not available in SSR,
-                 * checking if we are in a browser
-                 */}
-                <SearchInput
-                    style={{ marginBottom: 16 }}
-                    onChange={debounced}
-                    defaultValue={getQuery()}
-                />
-                {loading && (
-                    <Layer background="transparent" responsive={false}>
-                        <Box direction="row" align="center" margin="auto">
-                            <Spinner
-                                border={[
-                                    {
-                                        side: 'all',
-                                        color: '#FFF',
-                                        size: 'medium',
-                                        style: 'dotted',
-                                    },
-                                ]}
-                            />
-                            <Text margin="small">Finding movies...</Text>
-                        </Box>
-                    </Layer>
-                )}
-                <MovieGrid
-                    movies={movies}
-                    emptyMessage="No movies found. Try a new search term!"
-                />
-            </Box>
-        </Layout>
+        <Box flex>
+            {/** location not available in SSR,
+             * checking if we are in a browser
+             */}
+            <SearchInput
+                style={{ marginBottom: 16 }}
+                onChange={debounced}
+                defaultValue={query}
+            />
+            {loading && (
+                <Layer background="transparent" responsive={false}>
+                    <Box direction="row" align="center" margin="auto">
+                        <Spinner
+                            border={[
+                                {
+                                    side: 'all',
+                                    color: '#FFF',
+                                    size: 'medium',
+                                    style: 'dotted',
+                                },
+                            ]}
+                        />
+                        <Text margin="small">Finding movies...</Text>
+                    </Box>
+                </Layer>
+            )}
+            <MovieGrid
+                movies={movies}
+                emptyMessage="No movies found. Try a new search term!"
+            />
+        </Box>
     )
 }
 

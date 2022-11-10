@@ -1,9 +1,11 @@
 import React, { FC, ReactNode } from 'react'
 import { grommet } from 'grommet/themes'
+import { deepMerge } from 'grommet/utils'
 import { Grommet, Box, ThemeType } from 'grommet'
 
 import Navbar from './Navbar'
-import { deepMerge } from 'grommet/utils'
+import HeroImage from './HeroImage'
+import MobileNav from './MobileNav'
 import { PinnedMovieProvider } from '../context/PinnedMovieContext'
 
 export const customTheme: Partial<ThemeType> = {
@@ -14,7 +16,7 @@ export const customTheme: Partial<ThemeType> = {
                 light: '#023047',
             },
             background: {
-                dark: '#023047',
+                dark: '#141414',
                 light: '#D9DCD6',
             },
             control: {
@@ -44,12 +46,19 @@ interface LayoutProps {
 
 const Layout: FC<LayoutProps> = ({ children }) => {
     return (
-        <Grommet full theme={theme} themeMode="dark" style={{ overflowX: 'hidden', overflowY: 'auto' }}>
+        <Grommet
+            full
+            theme={theme}
+            themeMode="dark"
+            style={{ overflowX: 'hidden', overflowY: 'auto' }}
+        >
             <PinnedMovieProvider>
                 <Navbar />
-                <Box as="main" flex pad="medium">
+                <HeroImage />
+                <Box as="main" flex pad="large">
                     {children}
                 </Box>
+                <MobileNav />
             </PinnedMovieProvider>
         </Grommet>
     )
