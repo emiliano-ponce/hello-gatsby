@@ -47,8 +47,7 @@ const FilledPin = styled(Pin)`
 const MovieCard = ({ movie }: { movie: Movie }) => {
     const { movies, pinMovie, unpinMovie } = useContext(PinnedMovieContext)
 
-    const { id, overview, title, poster_path, release_date } =
-        movie
+    const { id, overview, title, poster_path, release_date } = movie
     const pinned = movies?.findIndex((m) => m.id === id) > -1
 
     const handlePinClick = () => {
@@ -71,11 +70,9 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
                 pad="small"
                 overflow={{ horizontal: 'hidden', vertical: 'auto' }}
             >
-                <Box>
-                    <Heading level={3}>{title}</Heading>
-                    <Text size="small">{release_date}</Text>
-                    <Paragraph fill>{overview}</Paragraph>
-                </Box>
+                <Heading level={3}>{title}</Heading>
+                <Text size="small">{release_date}</Text>
+                <Paragraph fill>{overview}</Paragraph>
             </Box>
         </InfoBox>
     )

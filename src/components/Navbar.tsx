@@ -1,19 +1,7 @@
 import React, { useState } from 'react'
-import { deepMerge } from 'grommet/utils'
-import { Video, Menu } from 'grommet-icons'
-import {
-    Heading,
-    Header,
-    Box,
-    Nav,
-    Anchor,
-    Layer,
-    Sidebar,
-    Grommet,
-    grommet,
-} from 'grommet'
+import { Github } from 'grommet-icons'
+import { Header, Nav, Text } from 'grommet'
 
-import { customTheme } from './Layout'
 import GrommetLink from './GrommetLink'
 import useIsMobile from '../hooks/useIsMobile'
 import useSiteMetadata from '../hooks/useSiteMeta'
@@ -22,62 +10,28 @@ const Navbar = () => {
     const { title } = useSiteMetadata()
     const isMobile = useIsMobile()
 
+    if (isMobile) return null
     return (
         <Header
             pad="medium"
-            height="xsmall"
+            direction="row"
+            height="xxsmall"
             sticky="scrollup"
-            background="brand"
-            direction={isMobile ? 'row-reverse' : 'row'}
+            background="#000"
         >
-            <Box flex direction="row" align="center">
-                <Heading level={2} margin={{ right: 'small' }}>
-                    {title}
-                </Heading>
-                <Video size={isMobile ? 'medium' : 'large'} />
-            </Box>
-            {isMobile ? (
-                <MobileNav />
-            ) : (
-                <Nav direction="row">
-                    <GrommetLink to="/" label="Home" />
-                    <GrommetLink to="/about" label="About" />
-                </Nav>
-            )}
+            <Nav direction="row">
+                <Text>{title}</Text>
+                <GrommetLink to="/" label="Home" />
+                <GrommetLink to="/about" label="About" />
+            </Nav>
+            <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/emiliano-ponce/hello-gatsby"
+            >
+                <Github />
+            </a>
         </Header>
-    )
-}
-
-const MobileNav = () => {
-    const [show, setShow] = useState(false)
-    const toggle = () => setShow(!show)
-
-    return (
-        <>
-            <Anchor
-                onClick={toggle}
-                icon={<Menu style={{ verticalAlign: 'middle' }} />}
-            />
-            {/** Auto theme was not applying here... */}
-            <Grommet theme={deepMerge(grommet, customTheme)} themeMode="dark">
-                {show && (
-                    <Layer
-                        style={{ width: '50%' }}
-                        position="left"
-                        onEsc={toggle}
-                        onClickOutside={toggle}
-                    >
-                        <Sidebar background="background" pad="medium">
-                            <Heading level={2}>Navigation</Heading>
-                            <Nav>
-                                <GrommetLink to="/" label="Home" />
-                                <GrommetLink to="/about" label="About" />
-                            </Nav>
-                        </Sidebar>
-                    </Layer>
-                )}
-            </Grommet>
-        </>
     )
 }
 

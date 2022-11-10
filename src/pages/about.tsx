@@ -1,13 +1,13 @@
 import React from 'react'
 import { HeadFC } from 'gatsby'
-import { Box, Markdown, Paragraph } from 'grommet'
+import { Box, Heading, Markdown, Paragraph } from 'grommet'
 import { StaticImage } from 'gatsby-plugin-image'
 
 import Seo from '../components/Seo'
 import Layout from '../components/Layout'
 
 const About = () => (
-    <Layout>
+    <>
         <Box as="article" margin="auto" align="center" width="large">
             <StaticImage
                 objectFit="contain"
@@ -21,10 +21,9 @@ const About = () => (
                 <br />
                 <br />
                 You should be able to search for and pin movies to the home
-                page. And the site should be mobile friendly! (on Chrome)
+                page. And the site should be mobile friendly! (at least on Chrome and Firefox)
                 <br />
-                <br />
-                I had fun making this. If I had more time I would probably
+                <br />I had fun making this. If I had more time I would probably
                 add some error handling, more tests, as well as a more detailed
                 view for the movies. You can find the source code on my{' '}
                 <Markdown style={{ display: 'inline' }}>
@@ -32,7 +31,44 @@ const About = () => (
                 </Markdown>
             </Paragraph>
         </Box>
-    </Layout>
+        <Box as="aside" margin="auto" align="center" width="large">
+            <Heading>Credits</Heading>
+            <Paragraph>
+                Heading Photo by{' '}
+                <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://unsplash.com/@imnoom?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+                >
+                    Noom Peerapong
+                </a>{' '}
+                on{' '}
+                <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://unsplash.com/s/photos/movie?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+                >
+                    Unsplash
+                </a>
+            </Paragraph>
+            <Paragraph>
+                Movie data sourced from
+                <Box height="small" width="small">
+                    <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://www.themoviedb.org"
+                    >
+                        <StaticImage
+                            objectFit="contain"
+                            src="../images/tmdb-logo.svg"
+                            alt="The Movie Database (TMDB) brand logo"
+                        />
+                    </a>
+                </Box>
+            </Paragraph>
+        </Box>
+    </>
 )
 
 export const Head: HeadFC = () => <Seo pageTitle="About Me" />
