@@ -61,8 +61,8 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
                 onClick={handlePinClick}
             />
             <Image
+                fill
                 fit="cover"
-                fill="horizontal"
                 alt={`Movie poster for ${title}`}
                 src={`${basePosterUrl}${poster_path}`}
             />
