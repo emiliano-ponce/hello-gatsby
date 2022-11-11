@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Github } from 'grommet-icons'
 import { Header, Nav, Text } from 'grommet'
 
@@ -18,6 +18,8 @@ const Navbar = () => {
             height="xxsmall"
             sticky="scrollup"
             background="#000"
+            //safari support
+            style={{ position: '-webkit-sticky' }}
         >
             <Nav direction="row">
                 <Text>{title}</Text>

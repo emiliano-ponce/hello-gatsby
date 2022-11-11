@@ -62,6 +62,7 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
             />
             <Image
                 fit="cover"
+                fill="horizontal"
                 alt={`Movie poster for ${title}`}
                 src={`${basePosterUrl}${poster_path}`}
             />

@@ -1,7 +1,7 @@
 import React from 'react'
 import { HeadFC } from 'gatsby'
-import { Box, Heading, Markdown, Paragraph } from 'grommet'
 import { StaticImage } from 'gatsby-plugin-image'
+import { Box, Heading, Markdown, Paragraph } from 'grommet'
 
 import Seo from '../components/Seo'
 import Layout from '../components/Layout'
