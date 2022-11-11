@@ -63,6 +63,7 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
             <Image
                 fill
                 fit="cover"
+                style={{ maxHeight: 700 }}
                 alt={`Movie poster for ${title}`}
                 src={`${basePosterUrl}${poster_path}`}
             />
