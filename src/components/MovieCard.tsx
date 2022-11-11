@@ -24,9 +24,6 @@ const InfoBox = styled(Box)`
     &:hover > .reveal {
         opacity: 1;
     }
-    & img {
-        flex: 0 0 auto;
-    }
 `
 
 const PinButton = styled(IconButton)`
