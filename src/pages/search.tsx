@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState, useRef } from 'react'
 import { HeadFC } from 'gatsby'
 import type { PageProps } from 'gatsby'
 import { useDebouncedCallback } from 'use-debounce'
@@ -15,12 +15,14 @@ const Search = ({ location }: PageProps) => {
     const [loading, setLoading] = useState(false)
     const [movies, setMovies] = useState<Movie[]>([])
 
+    const inputRef = useRef<HTMLInputElement>(null)
+
     const params = new URLSearchParams(location.search)
     const query = params.get('q') ?? ''
 
     const debounced = useDebouncedCallback(
         (e: ChangeEvent<HTMLInputElement>) => doSearch(e.target.value),
-        500
+        300
     )
 
     useEffect(() => {
@@ -31,6 +33,7 @@ const Search = ({ location }: PageProps) => {
         try {
             setLoading(true)
             setMovies(await searchMovies(query))
+            inputRef?.current?.focus()
         } catch (e) {
             // TODO: handle error
             console.error(e)
@@ -45,12 +48,13 @@ const Search = ({ location }: PageProps) => {
              * checking if we are in a browser
              */}
             <SearchInput
-                style={{ marginBottom: 16 }}
+                ref={inputRef}
                 onChange={debounced}
                 defaultValue={query}
+                style={{ marginBottom: 16 }}
             />
             {loading && (
-                <Layer background="transparent" responsive={false}>
+                <Layer background="transparent" responsive={false} modal={false}>
                     <Box direction="row" align="center" margin="auto">
                         <Spinner
                             border={[
