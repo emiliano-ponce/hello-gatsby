@@ -1,9 +1,10 @@
-import React, { useMemo, useEffect } from 'react'
-import { Box, Nav, Text } from 'grommet'
+import React, { useMemo } from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
-import { CircleInformation, Home, Search } from 'grommet-icons'
+import { Box, Nav, Text } from 'grommet'
 import { normalizeColor } from 'grommet/utils'
+import { CircleInformation, Home, Search } from 'grommet-icons'
+
 import useIsMobile from '../hooks/useIsMobile'
 
 const navHeight = "75px"

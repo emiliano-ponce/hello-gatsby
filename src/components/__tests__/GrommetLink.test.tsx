@@ -1,8 +1,8 @@
 import React from 'react'
 import { navigate } from 'gatsby'
 import '@testing-library/jest-dom'
-import userEvent from '@testing-library/user-event'
 import { screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import GrommetLink from '../GrommetLink'
 import renderWithRouter from './__utils__/renderWithRouter'
