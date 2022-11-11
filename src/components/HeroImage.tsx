@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Heading, Box } from 'grommet'
-import filmReel from '../images/film-reel.jpg'
 import { Video as VideoIcon } from 'grommet-icons'
 
 import useIsMobile from '../hooks/useIsMobile'
+import filmReel from '../images/film-reel.jpg'
 import useSiteMetadata from '../hooks/useSiteMeta'
 
 const HeroImageWrapper = styled(Box)`

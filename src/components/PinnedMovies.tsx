@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
+import { Box, BoxExtendedProps } from 'grommet'
 
 import MovieGrid from './MovieGrid'
-import { PinnedMovieContext } from '../context/PinnedMovieContext'
-import { Box, BoxExtendedProps } from 'grommet'
 import useIsMobile from '../hooks/useIsMobile'
+import { PinnedMovieContext } from '../context/PinnedMovieContext'
 
 const PinnedMovies = () => {
     const { movies } = useContext(PinnedMovieContext)

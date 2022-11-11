@@ -6,7 +6,6 @@ import { Box, Layer, Spinner, Text } from 'grommet'
 
 import Seo from '../components/Seo'
 import { Movie } from '../lib/types'
-import Layout from '../components/Layout'
 import { searchMovies } from '../lib/services'
 import MovieGrid from '../components/MovieGrid'
 import SearchInput from '../components/search/SerarchInput'

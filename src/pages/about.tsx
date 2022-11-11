@@ -4,7 +4,6 @@ import { StaticImage } from 'gatsby-plugin-image'
 import { Box, Heading, Markdown, Paragraph } from 'grommet'
 
 import Seo from '../components/Seo'
-import Layout from '../components/Layout'
 
 const About = () => (
     <>
@@ -21,7 +20,7 @@ const About = () => (
                 <br />
                 <br />
                 You should be able to search for and pin movies to the home
-                page. And the site should be mobile friendly! (at least on Chrome and Firefox)
+                page. And the site should be mobile friendly!
                 <br />
                 <br />I had fun making this. If I had more time I would probably
                 add some error handling, more tests, as well as a more detailed

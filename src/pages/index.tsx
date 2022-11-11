@@ -1,10 +1,9 @@
 import React from 'react'
-import { Box, Heading } from 'grommet'
 import { HeadFC } from 'gatsby'
+import { Box, Heading } from 'grommet'
 
 import '../style/App.css'
 import Seo from '../components/Seo'
-import Layout from '../components/Layout'
 import PinnedMovies from '../components/PinnedMovies'
 import PopularMovies from '../components/PopularMovies'
 import HomeSearch from '../components/search/HomeSearch'
