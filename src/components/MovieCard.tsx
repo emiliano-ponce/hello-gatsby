@@ -61,15 +61,15 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
                 onClick={handlePinClick}
             />
             <Image
-                fill
                 fit="cover"
-                style={{ maxHeight: 700 }}
+                fill="horizontal"
+                style={{ height: 'auto' }}
                 alt={`Movie poster for ${title}`}
                 src={`${basePosterUrl}${poster_path}`}
             />
             <Box
-                className="reveal"
                 pad="small"
+                className="reveal"
                 overflow={{ horizontal: 'hidden', vertical: 'auto' }}
             >
                 <Heading level={3}>{title}</Heading>

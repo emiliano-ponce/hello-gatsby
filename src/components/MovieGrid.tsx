@@ -16,9 +16,15 @@ const MovieGrid: FC<MovieGridProps> = ({
     const isMobile = useIsMobile()
 
     return (
-        <Grid columns={isMobile ? '100%' : 'medium'} gap="medium">
+        <Grid
+            gap="medium"
+            style={{ overflow: 'hidden' }}
+            columns={isMobile ? '100%' : 'medium'}
+        >
             {movies?.length ? (
-                movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)
+                movies.map((movie) => (
+                    <MovieCard key={movie.id} movie={movie} />
+                ))
             ) : (
                 <Text>{emptyMessage}</Text>
             )}
